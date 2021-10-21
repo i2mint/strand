@@ -20,7 +20,7 @@ class Taskrunner:
 
     def __call__(self, *args, **kwargs):
         try:
-            result = self._func(*args, **kwargs)
+            result = self._func(*self._init_args, *args, **self._init_kwargs, **kwargs)
             if self._on_iter:
                 for value in result:
                     self._on_iter(value)

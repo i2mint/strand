@@ -6,12 +6,21 @@ class CoroutineTaskrunner(Taskrunner):
     _yield_on_iter: bool
     def __init__(self, *args, yield_on_iter=True, **kwargs):
         Taskrunner.__init__(self, *args, **kwargs)
-        if yield_on_iter and self._on_iter:
-            _on_iter = self._on_iter
-            def async_on_iter(value):
-                _on_iter(value)
-                asyncio.sleep(0)
-            self._on_iter = async_on_iter
+        self._yield_on_iter = yield_on_iter
+
+    async def acall(self, *args, **kwargs):
+        result = self._func(*args, **kwargs)
+        if self._on_iter:
+            for value in result:
+                self._on_iter(value)
+                if self._yield_on_iter:
+                    await asyncio.sleep(0)
+        if self._on_end:
+            self._on_end(result)
+        return result
+
+    def get_coro(self, *args, **kwargs):
+        return self.acall(*args, **kwargs)
 
     def __call__(self, *args, **kwargs):
-        asyncio.run(Taskrunner.__call__(self, *args, **kwargs))
+        return asyncio.run(self.acall(*args, **kwargs))

@@ -61,21 +61,25 @@ def as_task(target=THREAD, **kwargs):
     >>> @as_task('store', store=some_store, pickle_func=True):
     ... def my_stored_function():
     ...     pass
-
     """
     def deco(func):
-        if target == THREAD:
-            target_cls = ThreadTaskrunner
-        elif target == PROCESS:
-            target_cls = MultiprocessTaskrunner
-        elif target == SYNC:
-            target_cls = Taskrunner
-        elif target == STORE:
-            target_cls = StoreTaskWriter
-        elif target == COROUTINE:
-            target_cls = CoroutineTaskrunner
+        if isinstance(target, str):
+            if target == THREAD:
+                target_cls = ThreadTaskrunner
+            elif target == PROCESS:
+                target_cls = MultiprocessTaskrunner
+            elif target == SYNC:
+                target_cls = Taskrunner
+            elif target == STORE:
+                target_cls = StoreTaskWriter
+            elif target == COROUTINE:
+                target_cls = CoroutineTaskrunner
+            else:
+                raise ValueError(f'Taskrunner target {target} is invalid. Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.')
+        elif target == Taskrunner or issubclass(target, Taskrunner):
+            target_cls = target
         else:
-            raise ValueError(f'Taskrunner target {target} is invalid. Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.')
+            raise ValueError(f'Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class.')
         return wraps(func)(target_cls(func, **kwargs))
 
     return deco
