@@ -34,14 +34,14 @@ def as_task(target=THREAD, **kwargs):
     You can add callbacks with keyword arguments.
 
     >>> def iter_callback(item):
-    ...     store_an_item(item)
+    ...     pass
     ...
     >>> @as_task(on_iter=iter_callback)
     ... def my_thread_iterable():
     ...     return []
     ...
     >>> def end_callback(results):
-    ...     store_many_items(results)
+    ...     pass
     ...
     >>> @as_task(on_end=end_callback)
     ... def my_thread_iterable_2():
@@ -49,7 +49,7 @@ def as_task(target=THREAD, **kwargs):
 
     You can specify a different kind of taskrunner. Please note that different taskrunners
     have different constraints on the kinds of values they can handle (described in those classes).
-    >>> @as_task('process', on_end=end_callback()):
+    >>> @as_task('process', on_end=end_callback):
     ... def my_multiprocess_function():
     ...     pass
     ...
