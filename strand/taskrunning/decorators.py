@@ -65,6 +65,7 @@ def as_task(target=THREAD, **kwargs):
     ...     pass
     """
     def deco(func):
+        print(f'target: {target}, kwargs: {dict(kwargs)}')
         if isinstance(target, str):
             if target == THREAD:
                 target_cls = ThreadTaskrunner
