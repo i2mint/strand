@@ -1,3 +1,5 @@
+"""A taskrunner that calls functions in separate processes"""
+
 from multiprocessing import Process, Queue
 
 from .base import Taskrunner

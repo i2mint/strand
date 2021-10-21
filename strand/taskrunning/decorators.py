@@ -1,3 +1,5 @@
+"""Decorators to simplify taskrunner syntax"""
+
 from functools import wraps
 
 from .base import Taskrunner

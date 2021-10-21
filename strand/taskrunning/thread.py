@@ -1,3 +1,5 @@
+"""A taskrunner that calls functions in threads"""
+
 from threading import Thread
 
 from .base import Taskrunner

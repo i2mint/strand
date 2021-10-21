@@ -1,3 +1,5 @@
+"""A taskrunner that calls functions in coroutines"""
+
 import asyncio
 
 from .base import Taskrunner

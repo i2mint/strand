@@ -1,3 +1,5 @@
+"""A taskrunner that writes task definitions to a store"""
+
 from time import time
 
 import dill

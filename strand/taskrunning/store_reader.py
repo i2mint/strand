@@ -1,3 +1,5 @@
+"""A taskrunner that reads task definitions from a store and runs the tasks"""
+
 from threading import Thread
 from typing import Callable
 

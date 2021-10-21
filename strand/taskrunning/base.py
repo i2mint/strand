@@ -1,3 +1,5 @@
+"""Taskrunner base class"""
+
 from typing import Callable, Optional
 
 class Taskrunner:
