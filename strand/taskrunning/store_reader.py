@@ -3,8 +3,10 @@
 from threading import Thread
 from typing import Callable
 
+
 class StoreTaskReader:
     _get_task_func: Callable
+
     def __init__(self, store, get_task_func=None):
         self._store = store
         self._get_task_func = get_task_func

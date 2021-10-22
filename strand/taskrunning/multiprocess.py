@@ -4,6 +4,7 @@ from multiprocessing import Process, Queue
 
 from .base import Taskrunner
 
+
 class MultiprocessTaskrunner(Taskrunner):
     def run(self, *args, **kwargs):
         Taskrunner.__call__(self, *args, **kwargs)

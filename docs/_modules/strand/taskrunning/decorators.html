@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>strand.taskrunning.decorators &#8212; strand 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/toggleprompt.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for strand.taskrunning.decorators</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Decorators to simplify taskrunner syntax&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Type</span>
+
+<span class="kn">from</span> <span class="nn">strand.taskrunning.base</span> <span class="kn">import</span> <span class="n">Taskrunner</span>
+<span class="kn">from</span> <span class="nn">strand.taskrunning.coroutine</span> <span class="kn">import</span> <span class="n">CoroutineTaskrunner</span>
+<span class="kn">from</span> <span class="nn">strand.taskrunning.multiprocess</span> <span class="kn">import</span> <span class="n">MultiprocessTaskrunner</span>
+<span class="kn">from</span> <span class="nn">strand.taskrunning.store_writer</span> <span class="kn">import</span> <span class="n">StoreTaskWriter</span>
+<span class="kn">from</span> <span class="nn">strand.taskrunning.thread</span> <span class="kn">import</span> <span class="n">ThreadTaskrunner</span>
+
+<span class="n">THREAD</span> <span class="o">=</span> <span class="s1">&#39;thread&#39;</span>
+<span class="n">PROCESS</span> <span class="o">=</span> <span class="s1">&#39;process&#39;</span>
+<span class="n">SYNC</span> <span class="o">=</span> <span class="s1">&#39;sync&#39;</span>
+<span class="n">STORE</span> <span class="o">=</span> <span class="s1">&#39;store&#39;</span>
+<span class="n">COROUTINE</span> <span class="o">=</span> <span class="s1">&#39;coroutine&#39;</span>
+
+
+<div class="viewcode-block" id="as_task"><a class="viewcode-back" href="../../../module_docs/strand/taskrunning/decorators.html#strand.taskrunning.decorators.as_task">[docs]</a><span class="k">def</span> <span class="nf">as_task</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Taskrunner</span><span class="p">]]</span> <span class="o">=</span> <span class="n">THREAD</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a decorator to wrap a function in a taskrunner instance.</span>
+<span class="sd">    When the decorator is called, the taskrunner will be launched</span>
+<span class="sd">    and the decorated function will be executed within the taskrunner&#39;s target context.</span>
+
+<span class="sd">    :param target: The kind of taskrunner to create. Valid targets are &#39;thread&#39;, &#39;process&#39;, &#39;sync&#39;,</span>
+<span class="sd">        &#39;store&#39;, and &#39;coroutine&#39;.</span>
+<span class="sd">    :param kwargs: __init__ arguments for the taskrunner.</span>
+<span class="sd">    :return: A decorator.</span>
+
+<span class="sd">    The most common default case is dispatching a function to a new thread, with no callbacks.</span>
+
+<span class="sd">    &gt;&gt;&gt; @as_task()</span>
+<span class="sd">    ... def my_thread_function():</span>
+<span class="sd">    ...     pass</span>
+
+<span class="sd">    You can add callbacks with keyword arguments.</span>
+
+<span class="sd">    &gt;&gt;&gt; def iter_callback(item):</span>
+<span class="sd">    ...     pass</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; @as_task(on_iter=iter_callback)</span>
+<span class="sd">    ... def my_thread_iterable():</span>
+<span class="sd">    ...     return []</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; def end_callback(results):</span>
+<span class="sd">    ...     pass</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; @as_task(on_end=end_callback)</span>
+<span class="sd">    ... def my_thread_iterable_2():</span>
+<span class="sd">    ...     return []</span>
+
+<span class="sd">    You can specify a different kind of taskrunner. Please note that different taskrunners</span>
+<span class="sd">    have different constraints on the kinds of values they can handle (described in those classes).</span>
+<span class="sd">    &gt;&gt;&gt; @as_task(&#39;process&#39;, on_end=end_callback)</span>
+<span class="sd">    ... def my_multiprocess_function():</span>
+<span class="sd">    ...     pass</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; @as_task(&#39;coroutine&#39;, yield_on_iter=False)</span>
+<span class="sd">    ... def my_coroutine_function():</span>
+<span class="sd">    ...     pass</span>
+<span class="sd">    ...</span>
+
+<span class="sd">    This example will pickle the function and its arguments when invoked and save them in a store,</span>
+<span class="sd">    with the assumption that some other process will read from the same store and execute the function later.</span>
+<span class="sd">    &gt;&gt;&gt; @as_task(&#39;store&#39;, store=None, pickle_func=True)</span>
+<span class="sd">    ... def my_stored_function():</span>
+<span class="sd">    ...     pass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">deco</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">THREAD</span><span class="p">:</span>
+                <span class="n">target_cls</span> <span class="o">=</span> <span class="n">ThreadTaskrunner</span>
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="n">PROCESS</span><span class="p">:</span>
+                <span class="n">target_cls</span> <span class="o">=</span> <span class="n">MultiprocessTaskrunner</span>
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="n">SYNC</span><span class="p">:</span>
+                <span class="n">target_cls</span> <span class="o">=</span> <span class="n">Taskrunner</span>
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="n">STORE</span><span class="p">:</span>
+                <span class="n">target_cls</span> <span class="o">=</span> <span class="n">StoreTaskWriter</span>
+            <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="n">COROUTINE</span><span class="p">:</span>
+                <span class="n">target_cls</span> <span class="o">=</span> <span class="n">CoroutineTaskrunner</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Taskrunner target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1"> is invalid. &#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;Valid targets are </span><span class="si">{</span><span class="n">THREAD</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">PROCESS</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">SYNC</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">STORE</span><span class="si">}</span><span class="s1">, and </span><span class="si">{</span><span class="n">COROUTINE</span><span class="si">}</span><span class="s1">.&#39;</span>
+                <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="n">Taskrunner</span> <span class="ow">or</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">Taskrunner</span><span class="p">):</span>
+            <span class="n">target_cls</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Taskrunner target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1"> is invalid. Must be an allowed string or a Taskrunner class.&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)(</span><span class="n">target_cls</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">deco</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">strand</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand.html">strand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning.html">strand.taskrunning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/base.html">strand.taskrunning.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/coroutine.html">strand.taskrunning.coroutine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/decorators.html">strand.taskrunning.decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/multiprocess.html">strand.taskrunning.multiprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/store_reader.html">strand.taskrunning.store_reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/store_writer.html">strand.taskrunning.store_writer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/strand/taskrunning/thread.html">strand.taskrunning.thread</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;NO COPYRIGHT.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

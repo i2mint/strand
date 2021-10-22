@@ -79,12 +79,16 @@ def as_task(target: Union[str, Type[Taskrunner]] = THREAD, **kwargs):
             elif target == COROUTINE:
                 target_cls = CoroutineTaskrunner
             else:
-                raise ValueError(f'Taskrunner target {target} is invalid. '
-                                 f'Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.')
+                raise ValueError(
+                    f'Taskrunner target {target} is invalid. '
+                    f'Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.'
+                )
         elif target == Taskrunner or issubclass(target, Taskrunner):
             target_cls = target
         else:
-            raise ValueError(f'Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class.')
+            raise ValueError(
+                f'Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class.'
+            )
         return wraps(func)(target_cls(func, **kwargs))
 
     return deco
