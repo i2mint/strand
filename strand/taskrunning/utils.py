@@ -1,3 +1,5 @@
+"""Utilities"""
+
 from strand.taskrunning.base import Taskrunner
 from strand.taskrunning.coroutine import CoroutineTaskrunner
 from strand.taskrunning.multiprocess import MultiprocessTaskrunner
@@ -5,6 +7,7 @@ from strand.taskrunning.store_writer import StoreTaskWriter
 from strand.taskrunning.thread import ThreadTaskrunner
 
 from strand.constants import THREAD, PROCESS, SYNC, STORE, COROUTINE
+
 
 def resolve_runner_cls(target):
     if isinstance(target, str):
@@ -19,10 +22,14 @@ def resolve_runner_cls(target):
         elif target == COROUTINE:
             target_cls = CoroutineTaskrunner
         else:
-            raise ValueError(f'Taskrunner target {target} is invalid. '
-                             f'Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.')
+            raise ValueError(
+                f'Taskrunner target {target} is invalid. '
+                f'Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.'
+            )
     elif target == Taskrunner or issubclass(target, Taskrunner):
         target_cls = target
     else:
-        raise ValueError(f'Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class.')
+        raise ValueError(
+            f'Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class.'
+        )
     return target_cls

@@ -7,16 +7,20 @@ import nanoid
 from .base import Taskrunner
 from .store_reader import StoreTaskReader
 
+
 class StoreTaskWriter(Taskrunner):
     task_id: str
-    def __init__(self,
-                 func,
-                 store,
-                 *args,
-                 read_store=None,
-                 pickle_func=False,
-                 get_result=None,
-                 **kwargs):
+
+    def __init__(
+        self,
+        func,
+        store,
+        *args,
+        read_store=None,
+        pickle_func=False,
+        get_result=None,
+        **kwargs
+    ):
         Taskrunner.__init__(self, func, *args, **kwargs)
         self._store = store
         self._get_result = get_result

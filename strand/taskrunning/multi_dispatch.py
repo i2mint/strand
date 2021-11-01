@@ -7,6 +7,7 @@ from strand.taskrunning.base import Taskrunner
 from strand.taskrunning.utils import resolve_runner_cls
 from strand.constants import THREAD
 
+
 class TaskDispatcher:
     """A class for dispatching multiple taskrunners and collecting their outputs.
 
@@ -36,6 +37,7 @@ class TaskDispatcher:
     >>> dispatcher.results
     [<Response [200]>]
     """
+
     _is_complete = False
     results = []
     status = []
@@ -43,6 +45,7 @@ class TaskDispatcher:
     _queued_runners = []
     _dispatched_runners = []
     _target_cls = Taskrunner
+
     def __init__(self, target=THREAD, check_complete=None):
         """
         Initialize the dispatcher and set configuration.
@@ -55,38 +58,44 @@ class TaskDispatcher:
         self._target_cls = resolve_runner_cls(target)
         self._check_complete = check_complete
 
-    def enqueue(self,
-                func: Callable,
-                *init_args,
-                target=None,
-                on_iter: Optional[Callable] = None,
-                on_end: Optional[Callable] = None,
-                on_error: Optional[Callable] = None,
-                args=None,
-                kwargs=None,
-                **init_kwargs):
+    def enqueue(
+        self,
+        func: Callable,
+        *init_args,
+        target=None,
+        on_iter: Optional[Callable] = None,
+        on_end: Optional[Callable] = None,
+        on_error: Optional[Callable] = None,
+        args=None,
+        kwargs=None,
+        **init_kwargs
+    ):
         self._is_complete = False
         if not kwargs:
             kwargs = {}
         target_cls = resolve_runner_cls(target) if target else self._target_cls
-        runner = target_cls(func,
-                            *init_args,
-                            on_iter=on_iter,
-                            on_end=self._mk_end_handler(on_end),
-                            on_error=self._mk_error_handler(on_error),
-                            **init_kwargs)
+        runner = target_cls(
+            func,
+            *init_args,
+            on_iter=on_iter,
+            on_end=self._mk_end_handler(on_end),
+            on_error=self._mk_error_handler(on_error),
+            **init_kwargs
+        )
         self._queued_runners.append((runner, args, kwargs))
 
-    def dispatch(self,
-                 func,
-                 *init_args,
-                 target = None,
-                 on_iter: Optional[Callable] = None,
-                 on_end: Optional[Callable] = None,
-                 on_error: Optional[Callable] = None,
-                 args=None,
-                 kwargs=None,
-                 **init_kwargs):
+    def dispatch(
+        self,
+        func,
+        *init_args,
+        target=None,
+        on_iter: Optional[Callable] = None,
+        on_end: Optional[Callable] = None,
+        on_error: Optional[Callable] = None,
+        args=None,
+        kwargs=None,
+        **init_kwargs
+    ):
         """Execute a single task. The results of the task will be appended to
         the results, status, and errors lists.
 
@@ -95,12 +104,14 @@ class TaskDispatcher:
         if not kwargs:
             kwargs = {}
         target_cls = resolve_runner_cls(target) if target else self._target_cls
-        runner = target_cls(func,
-                                 *init_args,
-                                 on_iter=on_iter,
-                                 on_end=self._mk_end_handler(on_end),
-                                 on_error=self._mk_error_handler(on_error),
-                                 **init_kwargs)
+        runner = target_cls(
+            func,
+            *init_args,
+            on_iter=on_iter,
+            on_end=self._mk_end_handler(on_end),
+            on_error=self._mk_error_handler(on_error),
+            **init_kwargs
+        )
         self._dispatched_runners.append(runner)
         return runner(*args, **kwargs)
 
@@ -123,21 +134,25 @@ class TaskDispatcher:
         target_index = len(self.results)
         self.results.append(None)
         self.status.append(None)
+
         def end_handler(result):
             self.results[target_index] = result
             self.status[target_index] = 'success'
             if on_end:
                 on_end(result)
+
         return end_handler
 
     def _mk_error_handler(self, on_error):
         target_index = len(self.errors)
         self.errors.append(None)
+
         def error_handler(result):
             self.errors[target_index] = result
             self.status[target_index] = 'error'
             if on_error:
                 on_error(result)
+
         return error_handler
 
     def reset(self):
@@ -154,9 +169,7 @@ class TaskDispatcher:
             return True
         if self._check_complete:
             self._is_complete = self._check_complete(
-                self.results,
-                self.status,
-                self.errors,
+                self.results, self.status, self.errors,
             )
         else:
             for status in self.status:

@@ -2,17 +2,21 @@
 
 from typing import Callable, Optional
 
+
 class Taskrunner:
     _on_iter: Optional[Callable]
     _on_end: Optional[Callable]
     _on_error: Optional[Callable]
-    def __init__(self,
-                 func: Callable,
-                 *args,
-                 on_iter: Optional[Callable] = None,
-                 on_end: Optional[Callable] = None,
-                 on_error: Optional[Callable] = None,
-                 **kwargs):
+
+    def __init__(
+        self,
+        func: Callable,
+        *args,
+        on_iter: Optional[Callable] = None,
+        on_end: Optional[Callable] = None,
+        on_error: Optional[Callable] = None,
+        **kwargs
+    ):
         self._func = func
         self._on_iter = on_iter
         self._on_end = on_end

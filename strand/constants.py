@@ -1,3 +1,5 @@
+"""Constants"""
+
 THREAD = 'thread'
 PROCESS = 'process'
 SYNC = 'sync'
