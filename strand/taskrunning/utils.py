@@ -48,7 +48,7 @@ def conditional_logger(verbose=False, log_func=print):
             pass  # do nothing
 
         return clog
-        
+
 
 @contextmanager
 def run_process(
