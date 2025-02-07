@@ -63,10 +63,11 @@ html_static_path = ['_static']
 
 
 # -- Options for Markdown support -------------------------------------------
-import commonmark
 
 
 def docstring(app, what, name, obj, options, lines):
+    import commonmark
+
     md = '\n'.join(lines)
     ast = commonmark.Parser().parse(md)
     rst = commonmark.ReStructuredTextRenderer().render(ast)
