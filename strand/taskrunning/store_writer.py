@@ -2,8 +2,6 @@
 
 from time import time
 
-import dill
-import nanoid
 from .base import Taskrunner
 from .store_reader import StoreTaskReader
 
@@ -50,9 +48,19 @@ class StoreTaskWriter(Taskrunner):
             'start_time': int(time() * 1000),
             'task_status': 'new',
         }
+
         if self._pickle_func:
-            task_dict['func'] = dill(self._func)
+            # TODO: Make the serialization a configurable option, not hardcoded!
+            try:
+                import dill
+                task_dict['func'] = dill.dumps(self._func)
+            except ImportError:
+                import pickle
+                task_dict['func'] = pickle.dumps(self._func)
+
         if not task_id:
-            task_id = nanoid.generate()
+            import uuid
+            task_id = str(uuid.uuid4())
+
         self._task_id = task_id
         self._store[task_id] = task_dict
