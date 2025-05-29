@@ -1,21 +1,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Welcome to strand’s documentation! &#8212; strand 0.1.3 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <title>Welcome to strand’s documentation! &#8212; strand 0.1.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/toggleprompt.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -39,17 +37,23 @@
           <div class="body" role="main">
             
   <section id="welcome-to-strand-s-documentation">
-<h1>Welcome to strand’s documentation!<a class="headerlink" href="#welcome-to-strand-s-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Welcome to strand’s documentation!<a class="headerlink" href="#welcome-to-strand-s-documentation" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand.html">strand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/constants.html">strand.constants</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning.html">strand.taskrunning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/base.html">strand.taskrunning.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/coroutine.html">strand.taskrunning.coroutine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/decorators.html">strand.taskrunning.decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/multi_dispatch.html">strand.taskrunning.multi_dispatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/decorators.html">strand.taskrunning.decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_docs/strand/taskrunning/decorators.html#strand.taskrunning.decorators.as_task"><code class="docutils literal notranslate"><span class="pre">as_task()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/multi_dispatch.html">strand.taskrunning.multi_dispatch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_docs/strand/taskrunning/multi_dispatch.html#strand.taskrunning.multi_dispatch.TaskDispatcher"><code class="docutils literal notranslate"><span class="pre">TaskDispatcher</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/multiprocess.html">strand.taskrunning.multiprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/store_reader.html">strand.taskrunning.store_reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/taskrunning/store_writer.html">strand.taskrunning.store_writer</a></li>
@@ -59,7 +63,7 @@
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -84,7 +88,7 @@
 
 
 <h3>Navigation</h3>
-<p><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand.html">strand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_docs/strand/constants.html">strand.constants</a></li>
@@ -112,12 +116,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -134,8 +138,8 @@
       &copy;NO COPYRIGHT.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="_sources/index.rst.txt"

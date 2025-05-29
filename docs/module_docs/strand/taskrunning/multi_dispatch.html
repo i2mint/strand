@@ -1,21 +1,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>strand.taskrunning.multi_dispatch &#8212; strand 0.1.3 documentation</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <title>strand.taskrunning.multi_dispatch &#8212; strand 0.1.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/toggleprompt.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
@@ -40,11 +38,11 @@
           <div class="body" role="main">
             
   <section id="module-strand.taskrunning.multi_dispatch">
-<span id="strand-taskrunning-multi-dispatch"></span><h1>strand.taskrunning.multi_dispatch<a class="headerlink" href="#module-strand.taskrunning.multi_dispatch" title="Permalink to this headline">¶</a></h1>
+<span id="strand-taskrunning-multi-dispatch"></span><h1>strand.taskrunning.multi_dispatch<a class="headerlink" href="#module-strand.taskrunning.multi_dispatch" title="Permalink to this heading">¶</a></h1>
 <p>Defines the TaskDispatcher class.</p>
 <dl class="py class">
-<dt id="strand.taskrunning.multi_dispatch.TaskDispatcher">
-<em class="property">class </em><code class="sig-prename descclassname">strand.taskrunning.multi_dispatch.</code><code class="sig-name descname">TaskDispatcher</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span><span class="o">=</span><span class="default_value">'thread'</span></em>, <em class="sig-param"><span class="n">check_complete</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/strand/taskrunning/multi_dispatch.html#TaskDispatcher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strand.taskrunning.multi_dispatch.TaskDispatcher" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="strand.taskrunning.multi_dispatch.TaskDispatcher">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">strand.taskrunning.multi_dispatch.</span></span><span class="sig-name descname"><span class="pre">TaskDispatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'thread'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_complete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/strand/taskrunning/multi_dispatch.html#TaskDispatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#strand.taskrunning.multi_dispatch.TaskDispatcher" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for dispatching multiple taskrunners and collecting their outputs.</p>
 <p>Use the dispatch method to launch a task. Dispatch as many tasks as you want
 with the same dispatcher, then check the property dispatcher.complete if you need
@@ -71,15 +69,15 @@ dispatcher.results
 [&lt;Response [200]&gt;]</p>
 </div></blockquote>
 <dl class="py method">
-<dt id="strand.taskrunning.multi_dispatch.TaskDispatcher.dispatch">
-<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">init_args</span></em>, <em class="sig-param"><span class="n">target</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">on_iter</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Callable<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">on_end</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Callable<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">on_error</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Callable<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">args</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">init_kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/strand/taskrunning/multi_dispatch.html#TaskDispatcher.dispatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strand.taskrunning.multi_dispatch.TaskDispatcher.dispatch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="strand.taskrunning.multi_dispatch.TaskDispatcher.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">init_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">init_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/strand/taskrunning/multi_dispatch.html#TaskDispatcher.dispatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#strand.taskrunning.multi_dispatch.TaskDispatcher.dispatch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a single task. The results of the task will be appended to
 the results, status, and errors lists.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="strand.taskrunning.multi_dispatch.TaskDispatcher.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/strand/taskrunning/multi_dispatch.html#TaskDispatcher.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#strand.taskrunning.multi_dispatch.TaskDispatcher.run" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="strand.taskrunning.multi_dispatch.TaskDispatcher.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/strand/taskrunning/multi_dispatch.html#TaskDispatcher.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#strand.taskrunning.multi_dispatch.TaskDispatcher.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute all enqueued tasks.</p>
 </dd></dl>
 
@@ -104,7 +102,7 @@ the results, status, and errors lists.</p>
 
 
 <h3>Navigation</h3>
-<p><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../strand.html">strand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../constants.html">strand.constants</a></li>
@@ -112,7 +110,10 @@ the results, status, and errors lists.</p>
 <li class="toctree-l1"><a class="reference internal" href="base.html">strand.taskrunning.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coroutine.html">strand.taskrunning.coroutine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decorators.html">strand.taskrunning.decorators</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">strand.taskrunning.multi_dispatch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">strand.taskrunning.multi_dispatch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#strand.taskrunning.multi_dispatch.TaskDispatcher"><code class="docutils literal notranslate"><span class="pre">TaskDispatcher</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="multiprocess.html">strand.taskrunning.multiprocess</a></li>
 <li class="toctree-l1"><a class="reference internal" href="store_reader.html">strand.taskrunning.store_reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="store_writer.html">strand.taskrunning.store_writer</a></li>
@@ -133,12 +134,12 @@ the results, status, and errors lists.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -155,8 +156,8 @@ the results, status, and errors lists.</p>
       &copy;NO COPYRIGHT.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="../../../_sources/module_docs/strand/taskrunning/multi_dispatch.rst.txt"
