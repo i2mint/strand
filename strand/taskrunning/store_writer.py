@@ -53,13 +53,16 @@ class StoreTaskWriter(Taskrunner):
             # TODO: Make the serialization a configurable option, not hardcoded!
             try:
                 import dill
+
                 task_dict['func'] = dill.dumps(self._func)
             except ImportError:
                 import pickle
+
                 task_dict['func'] = pickle.dumps(self._func)
 
         if not task_id:
             import uuid
+
             task_id = str(uuid.uuid4())
 
         self._task_id = task_id
