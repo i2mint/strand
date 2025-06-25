@@ -104,7 +104,7 @@ def run_process(
         try:
             already_running = process_already_running()
         except Exception as e:
-            raise RuntimeError(f"Error in process_already_running check: {e}")
+            raise RuntimeError(f'Error in process_already_running check: {e}')
 
     if already_running:
         yield None
