@@ -548,3 +548,39 @@ store = FileSystemStore(
 - `RUNNING`: Currently executing
 - `COMPLETED`: Successfully finished
 - `FAILED`: Failed with error
+
+## Process Management Utility
+
+The `run_process` context manager allows you to launch a process for the duration of a context, with optional readiness checks and automatic cleanup. It is useful for ensuring a background service or worker is running for the duration of a test or script.
+
+**Example:**
+
+```python
+from strand.taskrunning.utils import run_process
+import time
+
+def my_worker():
+    print("Worker started!")
+    time.sleep(5)
+    print("Worker exiting!")
+
+with run_process(my_worker, process_name="my_worker", is_ready=0.2, timeout=5) as proc:
+    print(f"Process running: {proc.is_alive()}")
+    # Do work while the process is running
+    time.sleep(1)
+# After the context, the process is cleaned up
+```
+
+You can also use the `process_already_running` argument to avoid launching a process if an external check indicates it is already running:
+
+```python
+def is_service_running():
+    # Return True if the service is already running
+    ...
+
+with run_process(my_worker, process_already_running=is_service_running) as proc:
+    if proc is None:
+        print("Service was already running!")
+    else:
+        print("Launched new worker process!")
+```
