@@ -3,7 +3,8 @@
 from contextlib import contextmanager
 from multiprocessing import Process, active_children
 from time import sleep, time
-from typing import Any, Callable, Union, Optional
+from typing import Any, Union, Optional
+from collections.abc import Callable
 from strand.taskrunning.base import Taskrunner
 from strand.taskrunning.coroutine import CoroutineTaskrunner
 from strand.taskrunning.multiprocess import MultiprocessTaskrunner
@@ -74,11 +75,11 @@ def run_process(
     func_kwargs=None,
     *,
     process_name=None,
-    is_ready: Union[Callable[[], Any], float, int] = None,
+    is_ready: Callable[[], Any] | float | int = None,
     timeout=30,
     force_kill=True,
     verbose=False,
-    process_already_running: Optional[Callable[[], bool]] = None,
+    process_already_running: Callable[[], bool] | None = None,
 ):
     """
     Context manager to launch a process and ensure cleanup.
@@ -123,7 +124,7 @@ def run_process(
 
     def launch_and_wait_till_ready(
         start_process: Callable[[], Any],
-        is_ready: Union[Callable[[], Any], float, int] = 5.0,
+        is_ready: Callable[[], Any] | float | int = 5.0,
         check_every_seconds=1.0,
         timeout=30.0,
     ):

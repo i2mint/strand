@@ -1,7 +1,8 @@
 """Defines the TaskDispatcher class."""
 
 import time
-from typing import Callable, Optional
+from typing import Optional
+from collections.abc import Callable
 
 from strand.taskrunning.base import Taskrunner
 from strand.taskrunning.utils import resolve_runner_cls
@@ -63,9 +64,9 @@ class TaskDispatcher:
         func: Callable,
         *init_args,
         target=None,
-        on_iter: Optional[Callable] = None,
-        on_end: Optional[Callable] = None,
-        on_error: Optional[Callable] = None,
+        on_iter: Callable | None = None,
+        on_end: Callable | None = None,
+        on_error: Callable | None = None,
         args=None,
         kwargs=None,
         **init_kwargs
@@ -89,9 +90,9 @@ class TaskDispatcher:
         func,
         *init_args,
         target=None,
-        on_iter: Optional[Callable] = None,
-        on_end: Optional[Callable] = None,
-        on_error: Optional[Callable] = None,
+        on_iter: Callable | None = None,
+        on_end: Callable | None = None,
+        on_error: Callable | None = None,
         args=None,
         kwargs=None,
         **init_kwargs

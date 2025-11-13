@@ -1,20 +1,21 @@
 """Taskrunner base class"""
 
-from typing import Callable, Optional
+from typing import Optional
+from collections.abc import Callable
 
 
 class Taskrunner:
-    _on_iter: Optional[Callable]
-    _on_end: Optional[Callable]
-    _on_error: Optional[Callable]
+    _on_iter: Callable | None
+    _on_end: Callable | None
+    _on_error: Callable | None
 
     def __init__(
         self,
         func: Callable,
         *args,
-        on_iter: Optional[Callable] = None,
-        on_end: Optional[Callable] = None,
-        on_error: Optional[Callable] = None,
+        on_iter: Callable | None = None,
+        on_end: Callable | None = None,
+        on_error: Callable | None = None,
         **kwargs
     ):
         self._func = func

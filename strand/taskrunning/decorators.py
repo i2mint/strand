@@ -8,7 +8,7 @@ from strand.constants import THREAD
 from strand.taskrunning.utils import resolve_runner_cls
 
 
-def as_task(target: Union[str, Type[Taskrunner]] = THREAD, **kwargs):
+def as_task(target: str | type[Taskrunner] = THREAD, **kwargs):
     """Creates a decorator to wrap a function in a taskrunner instance.
     When the decorator is called, the taskrunner will be launched
     and the decorated function will be executed within the taskrunner's target context.
