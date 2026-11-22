@@ -1,0 +1,12 @@
+strand.taskrunning.decorators
+=============================
+
+.. automodule:: strand.taskrunning.decorators
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      as_task
+   

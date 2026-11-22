@@ -1,0 +1,14 @@
+strand.taskrunning.utils
+========================
+
+.. automodule:: strand.taskrunning.utils
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      conditional_logger
+      resolve_runner_cls
+      run_process
+   

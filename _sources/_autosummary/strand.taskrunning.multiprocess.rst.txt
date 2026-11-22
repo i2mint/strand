@@ -1,0 +1,12 @@
+strand.taskrunning.multiprocess
+===============================
+
+.. automodule:: strand.taskrunning.multiprocess
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MultiprocessTaskrunner
+   

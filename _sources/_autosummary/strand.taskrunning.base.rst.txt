@@ -1,0 +1,12 @@
+strand.taskrunning.base
+=======================
+
+.. automodule:: strand.taskrunning.base
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Taskrunner
+   

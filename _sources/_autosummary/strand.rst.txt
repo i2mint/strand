@@ -1,0 +1,14 @@
+﻿strand
+======
+
+.. automodule:: strand
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   constants
+   taskrunning

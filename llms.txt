@@ -1,0 +1,30 @@
+# strand
+
+> Easy creation of non-blocking tasks
+
+
+## Pages
+
+- [strand](index.html.md): Easy creation of non-blocking tasks
+- [API reference](api.html.md): | &#96;strand&#96;   | Utilities for running functions in other contexts   |
+- [strand](_autosummary/strand.html.md): Utilities for running functions in other contexts
+- [strand.constants](_autosummary/strand.constants.html.md): Page content
+- [strand.taskrunning](_autosummary/strand.taskrunning.html.md): Taskrunners
+- [strand.taskrunning.base](_autosummary/strand.taskrunning.base.html.md): Taskrunner base class
+- [strand.taskrunning.coroutine](_autosummary/strand.taskrunning.coroutine.html.md): A taskrunner that calls functions in coroutines
+- [strand.taskrunning.decorators](_autosummary/strand.taskrunning.decorators.html.md): Decorators to simplify taskrunner syntax
+- [strand.taskrunning.multi_dispatch](_autosummary/strand.taskrunning.multi_dispatch.html.md): Defines the TaskDispatcher class.
+- [strand.taskrunning.multiprocess](_autosummary/strand.taskrunning.multiprocess.html.md): A taskrunner that calls functions in separate processes
+- [strand.taskrunning.store_reader](_autosummary/strand.taskrunning.store_reader.html.md): A taskrunner that reads task definitions from a store and runs the tasks
+- [strand.taskrunning.store_writer](_autosummary/strand.taskrunning.store_writer.html.md): A taskrunner that writes task definitions to a store
+- [strand.taskrunning.thread](_autosummary/strand.taskrunning.thread.html.md): A taskrunner that calls functions in threads
+- [strand.taskrunning.utils](_autosummary/strand.taskrunning.utils.html.md): | &#96;conditional_logger&#96;(&#91;verbose, log_func&#93;)          | Returns a logger function if verbose is True,...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 19:11 UTC&#42;&#42; from commit &lt;a href="https://github.com/i2m...
+
+## Optional
+
+- [strand.md](strand.md): Complete documentation in a single file.
+
+## Build
+
+- [build_info.json](build_info.json): build provenance (commit, version, tool versions, whether the docs match the package)

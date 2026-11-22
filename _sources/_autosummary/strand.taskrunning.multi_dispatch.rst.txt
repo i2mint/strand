@@ -1,0 +1,12 @@
+strand.taskrunning.multi\_dispatch
+==================================
+
+.. automodule:: strand.taskrunning.multi_dispatch
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      TaskDispatcher
+   

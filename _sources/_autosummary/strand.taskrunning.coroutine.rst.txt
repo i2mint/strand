@@ -1,0 +1,12 @@
+strand.taskrunning.coroutine
+============================
+
+.. automodule:: strand.taskrunning.coroutine
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      CoroutineTaskrunner
+   

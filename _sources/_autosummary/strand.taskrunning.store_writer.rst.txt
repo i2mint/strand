@@ -1,0 +1,12 @@
+strand.taskrunning.store\_writer
+================================
+
+.. automodule:: strand.taskrunning.store_writer
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      StoreTaskWriter
+   

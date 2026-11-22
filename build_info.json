@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-11-22T19:11:22Z",
+  "package": {
+    "name": "strand",
+    "version": "0.1.8",
+    "display_name": "strand",
+    "source": "pyproject.toml"
+  },
+  "git": {
+    "available": true,
+    "commit": "aed8d315d07a9d97d0412e0a9b3f85387eb2a09f",
+    "short_commit": "aed8d31",
+    "branch": "master",
+    "tags": [],
+    "dirty": false,
+    "remote_url": "https://github.com/i2mint/strand",
+    "commit_url": "https://github.com/i2mint/strand/commit/aed8d315d07a9d97d0412e0a9b3f85387eb2a09f",
+    "error": null
+  },
+  "ci": {
+    "provider": "github",
+    "repository": "i2mint/strand",
+    "sha": "aed8d315d07a9d97d0412e0a9b3f85387eb2a09f",
+    "sha_in_history": true,
+    "ref": "refs/heads/master",
+    "ref_name": "master",
+    "run_id": "45059181680",
+    "run_url": "https://github.com/i2mint/strand/actions/runs/45059181680",
+    "server_url": "https://github.com"
+  },
+  "tools": {
+    "epythet": "0.2.23",
+    "sphinx": "9.1.1",
+    "docutils": "0.22.4",
+    "python": "3.12.16"
+  },
+  "config": {
+    "theme": "auto",
+    "html_theme": "shibuya",
+    "accent": "#1e579f",
+    "mode": "auto",
+    "api_generator": "autosummary",
+    "ignore": [
+      "tests/",
+      "scrap/",
+      "examples/"
+    ],
+    "agent_outputs": true,
+    "aggregates": [
+      "md"
+    ],
+    "ai_artifacts": true,
+    "provenance": true,
+    "docs_dir": "docsrc"
+  },
+  "site": {
+    "modules_documented": 12,
+    "objects_documented": 7
+  },
+  "pypi": {
+    "checked": true,
+    "latest": "0.1.9",
+    "relation": "behind",
+    "error": null
+  },
+  "reproduce": "git clone https://github.com/i2mint/strand && cd strand\ngit checkout aed8d315d07a9d97d0412e0a9b3f85387eb2a09f\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "warnings": [],
+  "alignment": {
+    "aligned": false,
+    "notes": [
+      "The documented version (0.1.8) is behind the latest release on PyPI (0.1.9): `pip install strand` gives newer code than these docs describe."
+    ]
+  }
+}

@@ -1,4 +1,0 @@
-strand
-======
-.. automodule:: strand
-   :members:
