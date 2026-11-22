@@ -19,11 +19,13 @@ class TaskDispatcher:
     Results of tasks can be found in the 'results', 'status', and 'errors' properties.
 
     >>> from strand import TaskDispatcher
-    >>> import requests
     >>> from time import sleep
 
     >>> dispatcher = TaskDispatcher()
-    >>> _ = dispatcher.dispatch(requests.get, args=['https://zombo.com'])
+    >>> def slow_double(x):
+    ...     sleep(0.3)
+    ...     return 2 * x
+    >>> _ = dispatcher.dispatch(slow_double, args=[21])
     >>> dispatcher.status
     [None]
     >>> dispatcher.errors
@@ -36,7 +38,7 @@ class TaskDispatcher:
     >>> dispatcher.errors
     [None]
     >>> dispatcher.results
-    [<Response [200]>]
+    [42]
     """
 
     _is_complete = False
