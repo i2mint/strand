@@ -53,3 +53,6 @@ the results, status, and errors lists.
 #### run(timeout=10)
 
 Execute all enqueued tasks.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)

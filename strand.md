@@ -1,4 +1,4 @@
-> built 2026-11-22 20:15 UTC from 05a04f9 (master) · strand 0.1.8. Details: build_info.json
+> built 2026-11-22 22:04 UTC from a48b1ce (master) · strand 0.1.8. Details: build_info.json
 
 # index.html.md
 
@@ -377,6 +377,9 @@ the results, status, and errors lists.
 
 Execute all enqueued tasks.
 
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 
 # _autosummary/strand.taskrunning.multiprocess.html.md
 
@@ -487,7 +490,7 @@ Otherwise, launches the process and kills it on exit (if force_kill).
 
 # About this build
 
-This documentation was built on **2026-11-22 20:15 UTC** from commit <a href="https://github.com/i2mint/strand/commit/05a04f97337d1566e9cf983fbe75efb32bf33ad6"><code>05a04f9</code></a> on branch <code>master</code>, for **strand 0.1.8** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 22:04 UTC** from commit <a href="https://github.com/i2mint/strand/commit/a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b"><code>a48b1ce</code></a> on branch <code>master</code>, for **strand 0.1.8** (from <code>pyproject.toml</code>).
 
 #### WARNING
 The documentation and the package may be misaligned:
@@ -498,7 +501,7 @@ The documentation and the package may be misaligned:
 
 |                     |                                                                                                                                                      |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/i2mint/strand/commit/05a04f97337d1566e9cf983fbe75efb32bf33ad6"><code>05a04f97337d1566e9cf983fbe75efb32bf33ad6</code></a> |
+| Commit              | <a href="https://github.com/i2mint/strand/commit/a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b"><code>a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b</code></a> |
 | Branch              | <code>master</code>                                                                                                                                  |
 | Tags at this commit | none                                                                                                                                                 |
 | Working tree        | clean                                                                                                                                                |
@@ -509,9 +512,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>i2mint/strand</code>                                                                 |
-| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45065287849">45065287849</a>        |
+| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45075466301">45075466301</a>        |
 | Ref          | <code>refs/heads/master</code>                                                             |
-| Event commit | <code>05a04f97337d1566e9cf983fbe75efb32bf33ad6</code> (in the history of the built commit) |
+| Event commit | <code>a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -542,7 +545,7 @@ Latest release: <a href="https://pypi.org/project/strand/0.1.9/">0.1.9</a>, newe
 
 ```bash
 git clone https://github.com/i2mint/strand && cd strand
-git checkout 05a04f97337d1566e9cf983fbe75efb32bf33ad6
+git checkout a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
