@@ -7,7 +7,7 @@ from collections.abc import Callable
 class StoreTaskReader:
     _get_task_func: Callable
 
-    def __init__(self, store, get_task_func=None):
+    def __init__(self, store, get_task_func=None) -> None:
         self._store = store
         self._get_task_func = get_task_func
 
@@ -51,6 +51,6 @@ class StoreTaskReader:
             #                 }
             #         task_manager.update_task_by_id(task_id, update)
 
-    def listen(self):
+    def listen(self) -> None:
         t = Thread(target=self._listen_handler)
         t.start()

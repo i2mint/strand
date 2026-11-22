@@ -8,7 +8,7 @@ from .base import Taskrunner
 class CoroutineTaskrunner(Taskrunner):
     _yield_on_iter: bool
 
-    def __init__(self, *args, yield_on_iter=True, **kwargs):
+    def __init__(self, *args, yield_on_iter=True, **kwargs) -> None:
         Taskrunner.__init__(self, *args, **kwargs)
         self._yield_on_iter = yield_on_iter
 

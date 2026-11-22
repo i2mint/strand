@@ -18,7 +18,7 @@ class StoreTaskWriter(Taskrunner):
         pickle_func=False,
         get_result=None,
         **kwargs
-    ):
+    ) -> None:
         Taskrunner.__init__(self, func, *args, **kwargs)
         self._store = store
         self._get_result = get_result

@@ -49,7 +49,7 @@ class TaskDispatcher:
     _dispatched_runners = []
     _target_cls = Taskrunner
 
-    def __init__(self, target=THREAD, check_complete=None):
+    def __init__(self, target=THREAD, check_complete=None) -> None:
         """
         Initialize the dispatcher and set configuration.
 
@@ -72,7 +72,7 @@ class TaskDispatcher:
         args=None,
         kwargs=None,
         **init_kwargs
-    ):
+    ) -> None:
         self._is_complete = False
         if not kwargs:
             kwargs = {}
@@ -118,7 +118,7 @@ class TaskDispatcher:
         self._dispatched_runners.append(runner)
         return runner(*args, **kwargs)
 
-    def run(self, timeout=10):
+    def run(self, timeout=10) -> bool:
         """Execute all enqueued tasks.
 
         """
@@ -158,7 +158,7 @@ class TaskDispatcher:
 
         return error_handler
 
-    def reset(self):
+    def reset(self) -> None:
         self._is_complete = False
         self.results = []
         self.status = []
