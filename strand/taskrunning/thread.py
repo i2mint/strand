@@ -8,7 +8,7 @@ from .base import Taskrunner
 class ThreadTaskrunner(Taskrunner):
     _t = None
 
-    def run(self, *args, **kwargs):
+    def run(self, *args, **kwargs) -> None:
         Taskrunner.__call__(self, *args, **kwargs)
 
     def __call__(self, *args, **kwargs):
