@@ -52,6 +52,7 @@ def resolve_runner_cls(target):
 def conditional_logger(verbose=False, log_func=print):
     """
     Returns a logger function if verbose is True, otherwise a no-op function.
+
     Args:
         verbose: Whether to enable logging.
         log_func: The logging function to use (default: print).
