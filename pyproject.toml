@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "strand"
-version = "0.1.11"
+version = "0.1.12"
 description = "Easy creation of non-blocking tasks"
 readme = "README.md"
 requires-python = ">=3.10"
