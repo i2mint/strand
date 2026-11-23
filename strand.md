@@ -1,4 +1,4 @@
-> built 2026-11-22 22:04 UTC from a48b1ce (master) · strand 0.1.8. Details: build_info.json
+> built 2026-11-23 03:05 UTC from 505b4ae (master) · strand 0.1.8. Details: build_info.json
 
 # index.html.md
 
@@ -6,13 +6,11 @@
 
 # strand
 
-Easy creation of non-blocking tasks
+Easy creation of non-blocking tasks: run a function in a thread or a process and get on with your work.
 
-To install:	`pip install strand`
-
-## Warning
-
-In order to use threads or multiprocessing safely, you need to understand the constraints of those features. A thorough discussion of how not to shoot yourself in the foot is outside the scope of this library. Future versions of this library may include strong input checks to prevent more common mistakes, with optional arguments to override checks if necessary. This version does not contain any safety controls yet.
+```bash
+pip install strand
+```
 
 ## Basic Usage
 
@@ -35,6 +33,10 @@ runner = ThreadTaskrunner(long_blocking_function, on_iter=handle_chunk)
 # the function will run in a thread
 runner(1e8, 1e3)
 ```
+
+## Warning
+
+In order to use threads or multiprocessing safely, you need to understand the constraints of those features. A thorough discussion of how not to shoot yourself in the foot is outside the scope of this library. Future versions of this library may include strong input checks to prevent more common mistakes, with optional arguments to override checks if necessary. This version does not contain any safety controls yet.
 
 ## Decorator syntax
 
@@ -490,7 +492,7 @@ Otherwise, launches the process and kills it on exit (if force_kill).
 
 # About this build
 
-This documentation was built on **2026-11-22 22:04 UTC** from commit <a href="https://github.com/i2mint/strand/commit/a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b"><code>a48b1ce</code></a> on branch <code>master</code>, for **strand 0.1.8** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 03:05 UTC** from commit <a href="https://github.com/i2mint/strand/commit/505b4ae9fa6fd996f87b51e893c4388eff6365ba"><code>505b4ae</code></a> on branch <code>master</code>, for **strand 0.1.8** (from <code>pyproject.toml</code>).
 
 #### WARNING
 The documentation and the package may be misaligned:
@@ -501,7 +503,7 @@ The documentation and the package may be misaligned:
 
 |                     |                                                                                                                                                      |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/i2mint/strand/commit/a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b"><code>a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b</code></a> |
+| Commit              | <a href="https://github.com/i2mint/strand/commit/505b4ae9fa6fd996f87b51e893c4388eff6365ba"><code>505b4ae9fa6fd996f87b51e893c4388eff6365ba</code></a> |
 | Branch              | <code>master</code>                                                                                                                                  |
 | Tags at this commit | none                                                                                                                                                 |
 | Working tree        | clean                                                                                                                                                |
@@ -512,9 +514,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>i2mint/strand</code>                                                                 |
-| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45075466301">45075466301</a>        |
+| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45103713395">45103713395</a>        |
 | Ref          | <code>refs/heads/master</code>                                                             |
-| Event commit | <code>a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b</code> (in the history of the built commit) |
+| Event commit | <code>505b4ae9fa6fd996f87b51e893c4388eff6365ba</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -545,7 +547,7 @@ Latest release: <a href="https://pypi.org/project/strand/0.1.9/">0.1.9</a>, newe
 
 ```bash
 git clone https://github.com/i2mint/strand && cd strand
-git checkout a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b
+git checkout 505b4ae9fa6fd996f87b51e893c4388eff6365ba
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

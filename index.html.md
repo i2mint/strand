@@ -2,13 +2,11 @@
 
 # strand
 
-Easy creation of non-blocking tasks
+Easy creation of non-blocking tasks: run a function in a thread or a process and get on with your work.
 
-To install:	`pip install strand`
-
-## Warning
-
-In order to use threads or multiprocessing safely, you need to understand the constraints of those features. A thorough discussion of how not to shoot yourself in the foot is outside the scope of this library. Future versions of this library may include strong input checks to prevent more common mistakes, with optional arguments to override checks if necessary. This version does not contain any safety controls yet.
+```bash
+pip install strand
+```
 
 ## Basic Usage
 
@@ -31,6 +29,10 @@ runner = ThreadTaskrunner(long_blocking_function, on_iter=handle_chunk)
 # the function will run in a thread
 runner(1e8, 1e3)
 ```
+
+## Warning
+
+In order to use threads or multiprocessing safely, you need to understand the constraints of those features. A thorough discussion of how not to shoot yourself in the foot is outside the scope of this library. Future versions of this library may include strong input checks to prevent more common mistakes, with optional arguments to override checks if necessary. This version does not contain any safety controls yet.
 
 ## Decorator syntax
 

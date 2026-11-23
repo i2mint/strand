@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-22T22:04:18Z",
+  "built_at": "2026-11-23T03:05:40Z",
   "package": {
     "name": "strand",
     "version": "0.1.8",
@@ -9,24 +9,24 @@
   },
   "git": {
     "available": true,
-    "commit": "a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b",
-    "short_commit": "a48b1ce",
+    "commit": "505b4ae9fa6fd996f87b51e893c4388eff6365ba",
+    "short_commit": "505b4ae",
     "branch": "master",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/i2mint/strand",
-    "commit_url": "https://github.com/i2mint/strand/commit/a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b",
+    "commit_url": "https://github.com/i2mint/strand/commit/505b4ae9fa6fd996f87b51e893c4388eff6365ba",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "i2mint/strand",
-    "sha": "a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b",
+    "sha": "505b4ae9fa6fd996f87b51e893c4388eff6365ba",
     "sha_in_history": true,
     "ref": "refs/heads/master",
     "ref_name": "master",
-    "run_id": "45075466301",
-    "run_url": "https://github.com/i2mint/strand/actions/runs/45075466301",
+    "run_id": "45103713395",
+    "run_url": "https://github.com/i2mint/strand/actions/runs/45103713395",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -64,7 +64,7 @@
     "relation": "behind",
     "error": null
   },
-  "reproduce": "git clone https://github.com/i2mint/strand && cd strand\ngit checkout a48b1ceeaf7492ee61c86d9783784b9b5f7d3c7b\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/i2mint/strand && cd strand\ngit checkout 505b4ae9fa6fd996f87b51e893c4388eff6365ba\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
     "aligned": false,

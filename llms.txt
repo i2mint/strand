@@ -5,7 +5,7 @@
 
 ## Pages
 
-- [strand](index.html.md): Easy creation of non-blocking tasks
+- [strand](index.html.md): Easy creation of non-blocking tasks: run a function in a thread or a process and get on with your wo...
 - [API reference](api.html.md): | &#96;strand&#96;   | Utilities for running functions in other contexts   |
 - [strand](_autosummary/strand.html.md): Utilities for running functions in other contexts
 - [strand.constants](_autosummary/strand.constants.html.md): Page content
@@ -19,7 +19,7 @@
 - [strand.taskrunning.store_writer](_autosummary/strand.taskrunning.store_writer.html.md): A taskrunner that writes task definitions to a store
 - [strand.taskrunning.thread](_autosummary/strand.taskrunning.thread.html.md): A taskrunner that calls functions in threads
 - [strand.taskrunning.utils](_autosummary/strand.taskrunning.utils.html.md): | &#96;conditional_logger&#96;(&#91;verbose, log_func&#93;)          | Returns a logger function if verbose is True,...
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 22:04 UTC&#42;&#42; from commit &lt;a href="https://github.com/i2m...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-23 03:05 UTC&#42;&#42; from commit &lt;a href="https://github.com/i2m...
 
 ## Optional
 
