@@ -2,20 +2,20 @@
 
 # About this build
 
-This documentation was built on **2026-11-23 07:34 UTC** from commit <a href="https://github.com/i2mint/strand/commit/e461d6ceee828c9c01f2d73a0b40370e45f99310"><code>e461d6c</code></a> on branch <code>master</code>, for **strand 0.1.10** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 07:34 UTC** from commit <a href="https://github.com/i2mint/strand/commit/082f2015978912ea34d24d7f86980a58722139f1"><code>082f201</code></a> on branch <code>master</code>, for **strand 0.1.11** (from <code>pyproject.toml</code>).
 
 #### WARNING
 The documentation and the package may be misaligned:
 
-- The documented version (0.1.10) is behind the latest release on PyPI (0.1.11): `pip install strand` gives newer code than these docs describe.
+- The documented version (0.1.11) is behind the latest release on PyPI (0.1.12): `pip install strand` gives newer code than these docs describe.
 
 ## Source
 
 |                     |                                                                                                                                                      |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/i2mint/strand/commit/e461d6ceee828c9c01f2d73a0b40370e45f99310"><code>e461d6ceee828c9c01f2d73a0b40370e45f99310</code></a> |
+| Commit              | <a href="https://github.com/i2mint/strand/commit/082f2015978912ea34d24d7f86980a58722139f1"><code>082f2015978912ea34d24d7f86980a58722139f1</code></a> |
 | Branch              | <code>master</code>                                                                                                                                  |
-| Tags at this commit | none                                                                                                                                                 |
+| Tags at this commit | <code>0.1.11</code>                                                                                                                                  |
 | Working tree        | clean                                                                                                                                                |
 | Remote              | <code>https://github.com/i2mint/strand</code>                                                                                                        |
 
@@ -24,7 +24,7 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>i2mint/strand</code>                                                                 |
-| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45131878100">45131878100</a>        |
+| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45131976079">45131976079</a>        |
 | Ref          | <code>refs/heads/master</code>                                                             |
 | Event commit | <code>e461d6ceee828c9c01f2d73a0b40370e45f99310</code> (in the history of the built commit) |
 
@@ -51,13 +51,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/strand/0.1.11/">0.1.11</a>, newer than the documented version (0.1.10).
+Latest release: <a href="https://pypi.org/project/strand/0.1.12/">0.1.12</a>, newer than the documented version (0.1.11).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/i2mint/strand && cd strand
-git checkout e461d6ceee828c9c01f2d73a0b40370e45f99310
+git checkout 082f2015978912ea34d24d7f86980a58722139f1
 pip install "epythet==0.2.24"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
