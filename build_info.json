@@ -1,36 +1,36 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-23T03:05:40Z",
+  "built_at": "2026-11-23T07:34:18Z",
   "package": {
     "name": "strand",
-    "version": "0.1.8",
+    "version": "0.1.10",
     "display_name": "strand",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "505b4ae9fa6fd996f87b51e893c4388eff6365ba",
-    "short_commit": "505b4ae",
+    "commit": "e461d6ceee828c9c01f2d73a0b40370e45f99310",
+    "short_commit": "e461d6c",
     "branch": "master",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/i2mint/strand",
-    "commit_url": "https://github.com/i2mint/strand/commit/505b4ae9fa6fd996f87b51e893c4388eff6365ba",
+    "commit_url": "https://github.com/i2mint/strand/commit/e461d6ceee828c9c01f2d73a0b40370e45f99310",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "i2mint/strand",
-    "sha": "505b4ae9fa6fd996f87b51e893c4388eff6365ba",
+    "sha": "e461d6ceee828c9c01f2d73a0b40370e45f99310",
     "sha_in_history": true,
     "ref": "refs/heads/master",
     "ref_name": "master",
-    "run_id": "45103713395",
-    "run_url": "https://github.com/i2mint/strand/actions/runs/45103713395",
+    "run_id": "45131878100",
+    "run_url": "https://github.com/i2mint/strand/actions/runs/45131878100",
     "server_url": "https://github.com"
   },
   "tools": {
-    "epythet": "0.2.23",
+    "epythet": "0.2.24",
     "sphinx": "9.1.1",
     "docutils": "0.22.4",
     "python": "3.12.16"
@@ -60,16 +60,16 @@
   },
   "pypi": {
     "checked": true,
-    "latest": "0.1.9",
+    "latest": "0.1.11",
     "relation": "behind",
     "error": null
   },
-  "reproduce": "git clone https://github.com/i2mint/strand && cd strand\ngit checkout 505b4ae9fa6fd996f87b51e893c4388eff6365ba\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/i2mint/strand && cd strand\ngit checkout e461d6ceee828c9c01f2d73a0b40370e45f99310\npip install \"epythet==0.2.24\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
     "aligned": false,
     "notes": [
-      "The documented version (0.1.8) is behind the latest release on PyPI (0.1.9): `pip install strand` gives newer code than these docs describe."
+      "The documented version (0.1.10) is behind the latest release on PyPI (0.1.11): `pip install strand` gives newer code than these docs describe."
     ]
   }
 }

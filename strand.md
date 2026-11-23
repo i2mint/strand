@@ -1,4 +1,4 @@
-> built 2026-11-23 03:05 UTC from 505b4ae (master) · strand 0.1.8. Details: build_info.json
+> built 2026-11-23 07:34 UTC from e461d6c (master) · strand 0.1.10. Details: build_info.json
 
 # index.html.md
 
@@ -447,11 +447,10 @@ Utilities
 ### strand.taskrunning.utils.conditional_logger(verbose=False, log_func=<built-in function print>)
 
 Returns a logger function if verbose is True, otherwise a no-op function.
-:type verbose: 
-:param verbose: Whether to enable logging.
-:type log_func: 
-:param log_func: The logging function to use (default: print).
 
+* **Parameters:**
+  * **verbose** – Whether to enable logging.
+  * **log_func** – The logging function to use (default: print).
 * **Returns:**
   A logging function.
 
@@ -492,18 +491,18 @@ Otherwise, launches the process and kills it on exit (if force_kill).
 
 # About this build
 
-This documentation was built on **2026-11-23 03:05 UTC** from commit <a href="https://github.com/i2mint/strand/commit/505b4ae9fa6fd996f87b51e893c4388eff6365ba"><code>505b4ae</code></a> on branch <code>master</code>, for **strand 0.1.8** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 07:34 UTC** from commit <a href="https://github.com/i2mint/strand/commit/e461d6ceee828c9c01f2d73a0b40370e45f99310"><code>e461d6c</code></a> on branch <code>master</code>, for **strand 0.1.10** (from <code>pyproject.toml</code>).
 
 #### WARNING
 The documentation and the package may be misaligned:
 
-- The documented version (0.1.8) is behind the latest release on PyPI (0.1.9): `pip install strand` gives newer code than these docs describe.
+- The documented version (0.1.10) is behind the latest release on PyPI (0.1.11): `pip install strand` gives newer code than these docs describe.
 
 ## Source
 
 |                     |                                                                                                                                                      |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/i2mint/strand/commit/505b4ae9fa6fd996f87b51e893c4388eff6365ba"><code>505b4ae9fa6fd996f87b51e893c4388eff6365ba</code></a> |
+| Commit              | <a href="https://github.com/i2mint/strand/commit/e461d6ceee828c9c01f2d73a0b40370e45f99310"><code>e461d6ceee828c9c01f2d73a0b40370e45f99310</code></a> |
 | Branch              | <code>master</code>                                                                                                                                  |
 | Tags at this commit | none                                                                                                                                                 |
 | Working tree        | clean                                                                                                                                                |
@@ -514,15 +513,15 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>i2mint/strand</code>                                                                 |
-| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45103713395">45103713395</a>        |
+| Run          | <a href="https://github.com/i2mint/strand/actions/runs/45131878100">45131878100</a>        |
 | Ref          | <code>refs/heads/master</code>                                                             |
-| Event commit | <code>505b4ae9fa6fd996f87b51e893c4388eff6365ba</code> (in the history of the built commit) |
+| Event commit | <code>e461d6ceee828c9c01f2d73a0b40370e45f99310</code> (in the history of the built commit) |
 
 ## Tools
 
 |          |         |
 |----------|---------|
-| epythet  | 0.2.23  |
+| epythet  | 0.2.24  |
 | Sphinx   | 9.1.1   |
 | docutils | 0.22.4  |
 | Python   | 3.12.16 |
@@ -541,14 +540,14 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/strand/0.1.9/">0.1.9</a>, newer than the documented version (0.1.8).
+Latest release: <a href="https://pypi.org/project/strand/0.1.11/">0.1.11</a>, newer than the documented version (0.1.10).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/i2mint/strand && cd strand
-git checkout 505b4ae9fa6fd996f87b51e893c4388eff6365ba
-pip install "epythet==0.2.23"
+git checkout e461d6ceee828c9c01f2d73a0b40370e45f99310
+pip install "epythet==0.2.24"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 

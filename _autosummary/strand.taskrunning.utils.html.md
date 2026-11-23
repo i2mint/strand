@@ -12,11 +12,10 @@ Utilities
 ### strand.taskrunning.utils.conditional_logger(verbose=False, log_func=<built-in function print>)
 
 Returns a logger function if verbose is True, otherwise a no-op function.
-:type verbose: 
-:param verbose: Whether to enable logging.
-:type log_func: 
-:param log_func: The logging function to use (default: print).
 
+* **Parameters:**
+  * **verbose** – Whether to enable logging.
+  * **log_func** – The logging function to use (default: print).
 * **Returns:**
   A logging function.
 

@@ -166,14 +166,14 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="37">            <span class="n">target_cls</span> <span class="o">=</span> <span class="n">CoroutineTaskrunner</span>
 </span><span data-line="38">        <span class="k">else</span><span class="p">:</span>
 </span><span data-line="39">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span data-line="40">                <span class="sa">f</span><span class="s1">'Taskrunner target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1"> is invalid. '</span>
-</span><span data-line="41">                <span class="sa">f</span><span class="s1">'Valid targets are </span><span class="si">{</span><span class="n">THREAD</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">PROCESS</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">SYNC</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">STORE</span><span class="si">}</span><span class="s1">, and </span><span class="si">{</span><span class="n">COROUTINE</span><span class="si">}</span><span class="s1">.'</span>
+</span><span data-line="40">                <span class="sa">f</span><span class="s2">"Taskrunner target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2"> is invalid. "</span>
+</span><span data-line="41">                <span class="sa">f</span><span class="s2">"Valid targets are </span><span class="si">{</span><span class="n">THREAD</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">PROCESS</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">SYNC</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">STORE</span><span class="si">}</span><span class="s2">, and </span><span class="si">{</span><span class="n">COROUTINE</span><span class="si">}</span><span class="s2">."</span>
 </span><span data-line="42">            <span class="p">)</span>
 </span><span data-line="43">    <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="n">Taskrunner</span> <span class="ow">or</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">Taskrunner</span><span class="p">):</span>
 </span><span data-line="44">        <span class="n">target_cls</span> <span class="o">=</span> <span class="n">target</span>
 </span><span data-line="45">    <span class="k">else</span><span class="p">:</span>
 </span><span data-line="46">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span data-line="47">            <span class="sa">f</span><span class="s1">'Taskrunner target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1"> is invalid. Must be an allowed string or a Taskrunner class.'</span>
+</span><span data-line="47">            <span class="sa">f</span><span class="s2">"Taskrunner target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2"> is invalid. Must be an allowed string or a Taskrunner class."</span>
 </span><span data-line="48">        <span class="p">)</span>
 </span><span data-line="49">    <span class="k">return</span> <span class="n">target_cls</span></div>
 
@@ -184,147 +184,148 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="52"><span class="k">def</span><span class="w"> </span><span class="nf">conditional_logger</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">log_func</span><span class="o">=</span><span class="nb">print</span><span class="p">):</span>
 </span><span data-line="53"><span class="w">    </span><span class="sd">"""</span>
 </span><span data-line="54"><span class="sd">    Returns a logger function if verbose is True, otherwise a no-op function.</span>
-</span><span data-line="55"><span class="sd">    Args:</span>
-</span><span data-line="56"><span class="sd">        verbose: Whether to enable logging.</span>
-</span><span data-line="57"><span class="sd">        log_func: The logging function to use (default: print).</span>
-</span><span data-line="58"><span class="sd">    Returns:</span>
-</span><span data-line="59"><span class="sd">        A logging function.</span>
-</span><span data-line="60"><span class="sd">    """</span>
-</span><span data-line="61">    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span data-line="62">        <span class="k">return</span> <span class="n">log_func</span>
-</span><span data-line="63">    <span class="k">else</span><span class="p">:</span>
-</span><span data-line="64">
-</span><span data-line="65">        <span class="k">def</span><span class="w"> </span><span class="nf">clog</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span data-line="66">            <span class="k">pass</span>  <span class="c1"># do nothing</span>
-</span><span data-line="67">
-</span><span data-line="68">        <span class="k">return</span> <span class="n">clog</span></div>
+</span><span data-line="55">
+</span><span data-line="56"><span class="sd">    Args:</span>
+</span><span data-line="57"><span class="sd">        verbose: Whether to enable logging.</span>
+</span><span data-line="58"><span class="sd">        log_func: The logging function to use (default: print).</span>
+</span><span data-line="59"><span class="sd">    Returns:</span>
+</span><span data-line="60"><span class="sd">        A logging function.</span>
+</span><span data-line="61"><span class="sd">    """</span>
+</span><span data-line="62">    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span data-line="63">        <span class="k">return</span> <span class="n">log_func</span>
+</span><span data-line="64">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="65">
+</span><span data-line="66">        <span class="k">def</span><span class="w"> </span><span class="nf">clog</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span data-line="67">            <span class="k">pass</span>  <span class="c1"># do nothing</span>
+</span><span data-line="68">
+</span><span data-line="69">        <span class="k">return</span> <span class="n">clog</span></div>
 
-</span><span data-line="69">
 </span><span data-line="70">
+</span><span data-line="71">
 <div class="viewcode-block" id="run_process">
 <a class="viewcode-back" href="../../../_autosummary/strand.taskrunning.utils.html#strand.taskrunning.utils.run_process">[docs]</a>
-</span><span data-line="71"><span class="nd">@contextmanager</span>
-</span><span data-line="72"><span class="k">def</span><span class="w"> </span><span class="nf">run_process</span><span class="p">(</span>
-</span><span data-line="73">    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-</span><span data-line="74">    <span class="n">func_args</span><span class="o">=</span><span class="p">(),</span>
-</span><span data-line="75">    <span class="n">func_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span data-line="76">    <span class="o">*</span><span class="p">,</span>
-</span><span data-line="77">    <span class="n">process_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span data-line="78">    <span class="n">is_ready</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="79">    <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-</span><span data-line="80">    <span class="n">force_kill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span data-line="81">    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span data-line="82">    <span class="n">process_already_running</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="83"><span class="p">):</span>
-</span><span data-line="84"><span class="w">    </span><span class="sd">"""</span>
-</span><span data-line="85"><span class="sd">    Context manager to launch a process and ensure cleanup.</span>
-</span><span data-line="86"><span class="sd">    If process_already_running is provided and returns True, the process is not launched or killed.</span>
-</span><span data-line="87"><span class="sd">    Otherwise, launches the process and kills it on exit (if force_kill).</span>
-</span><span data-line="88">
-</span><span data-line="89"><span class="sd">    Args:</span>
-</span><span data-line="90"><span class="sd">        func: The function to run in a new process.</span>
-</span><span data-line="91"><span class="sd">        func_args: Positional arguments for the function.</span>
-</span><span data-line="92"><span class="sd">        func_kwargs: Keyword arguments for the function.</span>
-</span><span data-line="93"><span class="sd">        process_name: Name for the process (optional).</span>
-</span><span data-line="94"><span class="sd">        is_ready: Predicate or seconds to wait for readiness (optional).</span>
-</span><span data-line="95"><span class="sd">        timeout: Timeout for readiness check (seconds).</span>
-</span><span data-line="96"><span class="sd">        force_kill: Whether to kill the process on exit.</span>
-</span><span data-line="97"><span class="sd">        verbose: Enable verbose logging.</span>
-</span><span data-line="98"><span class="sd">        process_already_running: Callable that returns True if the process is already running.</span>
-</span><span data-line="99"><span class="sd">    Yields:</span>
-</span><span data-line="100"><span class="sd">        The process object if launched, else None.</span>
-</span><span data-line="101"><span class="sd">    """</span>
-</span><span data-line="102">    <span class="c1"># Check if process is already running</span>
-</span><span data-line="103">    <span class="n">already_running</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="104">    <span class="k">if</span> <span class="n">process_already_running</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="105">        <span class="k">try</span><span class="p">:</span>
-</span><span data-line="106">            <span class="n">already_running</span> <span class="o">=</span> <span class="n">process_already_running</span><span class="p">()</span>
-</span><span data-line="107">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span data-line="108">            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Error in process_already_running check: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-</span><span data-line="109">
-</span><span data-line="110">    <span class="k">if</span> <span class="n">already_running</span><span class="p">:</span>
-</span><span data-line="111">        <span class="k">yield</span> <span class="kc">None</span>
-</span><span data-line="112">        <span class="k">return</span>
-</span><span data-line="113">
-</span><span data-line="114">    <span class="k">def</span><span class="w"> </span><span class="nf">launch_process</span><span class="p">():</span>
-</span><span data-line="115">        <span class="k">try</span><span class="p">:</span>
-</span><span data-line="116">            <span class="nb">print</span><span class="p">(</span><span class="s1">'starting process!...'</span><span class="p">)</span>
-</span><span data-line="117">            <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Starting </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s1"> process...'</span><span class="p">)</span>
-</span><span data-line="118">            <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span><span data-line="119">            <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s1">'... </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s1"> process started.'</span><span class="p">)</span>
-</span><span data-line="120">        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-</span><span data-line="121">            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-</span><span data-line="122">                <span class="sa">f</span><span class="s1">'Something went wrong when trying to launch process </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s1">'</span>
-</span><span data-line="123">            <span class="p">)</span>
-</span><span data-line="124">
-</span><span data-line="125">    <span class="k">def</span><span class="w"> </span><span class="nf">launch_and_wait_till_ready</span><span class="p">(</span>
-</span><span data-line="126">        <span class="n">start_process</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">],</span>
-</span><span data-line="127">        <span class="n">is_ready</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
-</span><span data-line="128">        <span class="n">check_every_seconds</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span data-line="129">        <span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
-</span><span data-line="130">    <span class="p">):</span>
-</span><span data-line="131"><span class="w">        </span><span class="sd">"""A function that launches a process, checks if it's ready, and exits when it is.</span>
-</span><span data-line="132">
-</span><span data-line="133"><span class="sd">        :param start_process: A argument-less function that launches an independent process</span>
-</span><span data-line="134"><span class="sd">        :param is_ready: A argument-less function that returns False if, and only if, the process should be considered ready</span>
-</span><span data-line="135"><span class="sd">        :param check_every_seconds: Determines the frequency that is_ready will be called</span>
-</span><span data-line="136"><span class="sd">        :param timeout: Determines how long to wait for the process to be ready before we should give up</span>
-</span><span data-line="137"><span class="sd">        :return: start_process_output, is_ready_output</span>
-</span><span data-line="138"><span class="sd">        """</span>
-</span><span data-line="139">        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-</span><span data-line="140">
-</span><span data-line="141">        <span class="c1"># If is_ready is a number, make an is_ready function out of it</span>
-</span><span data-line="142">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">is_ready</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
-</span><span data-line="143">            <span class="n">is_ready_in_seconds</span> <span class="o">=</span> <span class="n">is_ready</span>
-</span><span data-line="144">
-</span><span data-line="145">            <span class="k">def</span><span class="w"> </span><span class="nf">is_ready_func</span><span class="p">():</span>
-</span><span data-line="146">                <span class="sa">f</span><span class="s2">"""Returns True if, and only if, </span><span class="si">{</span><span class="n">is_ready_in_seconds</span><span class="si">}</span><span class="s2"> elapsed"""</span>
-</span><span data-line="147">                <span class="k">return</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span> <span class="o">&gt;=</span> <span class="n">is_ready_in_seconds</span>
-</span><span data-line="148">
-</span><span data-line="149">            <span class="n">is_ready_func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'wait_for_seconds(</span><span class="si">{</span><span class="n">is_ready_in_seconds</span><span class="si">}</span><span class="s1">)'</span>
-</span><span data-line="150">            <span class="n">is_ready</span> <span class="o">=</span> <span class="n">is_ready_func</span>
-</span><span data-line="151">        <span class="n">start_process_output</span> <span class="o">=</span> <span class="n">start_process</span><span class="p">()</span>  <span class="c1"># needs launch a parallel process!</span>
-</span><span data-line="152">        <span class="k">while</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">:</span>
-</span><span data-line="153">            <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-</span><span data-line="154">            <span class="n">is_ready_output</span> <span class="o">=</span> <span class="n">is_ready</span><span class="p">()</span>
-</span><span data-line="155">            <span class="k">if</span> <span class="n">is_ready_output</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-</span><span data-line="156">                <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
-</span><span data-line="157">                <span class="n">sleep</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">check_every_seconds</span> <span class="o">-</span> <span class="n">elapsed</span><span class="p">))</span>
-</span><span data-line="158">            <span class="k">else</span><span class="p">:</span>
-</span><span data-line="159">                <span class="k">return</span> <span class="n">start_process_output</span><span class="p">,</span> <span class="n">is_ready_output</span>
-</span><span data-line="160">        <span class="c1"># If you got so far, raise TimeoutError</span>
-</span><span data-line="161">        <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span>
-</span><span data-line="162">            <span class="sa">f</span><span class="s2">"Launching </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">start_process</span><span class="p">,</span><span class="w"> </span><span class="s1">'__qualname__'</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
-</span><span data-line="163">            <span class="sa">f</span><span class="s2">"and checking for readiness with </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">is_ready</span><span class="p">,</span><span class="w"> </span><span class="s1">'__qualname__'</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
-</span><span data-line="164">            <span class="sa">f</span><span class="s1">'timedout (timeout=</span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s1">s)'</span>
-</span><span data-line="165">        <span class="p">)</span>
-</span><span data-line="166">
-</span><span data-line="167">    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">func_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
-</span><span data-line="168">    <span class="n">clog</span> <span class="o">=</span> <span class="n">conditional_logger</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
-</span><span data-line="169">    <span class="n">process_name</span> <span class="o">=</span> <span class="n">process_name</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">'__qualname__'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\b</span><span class="s1">'</span><span class="p">)</span>
-</span><span data-line="170">
-</span><span data-line="171">    <span class="k">try</span><span class="p">:</span>
-</span><span data-line="172">        <span class="n">process</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">func_args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">process_name</span><span class="p">)</span>
-</span><span data-line="173">
-</span><span data-line="174">        <span class="k">if</span> <span class="n">is_ready</span><span class="p">:</span>  <span class="c1"># if the 'is_ready' time or predicate is defined</span>
-</span><span data-line="175">            <span class="n">launch_and_wait_till_ready</span><span class="p">(</span><span class="n">launch_process</span><span class="p">,</span> <span class="n">is_ready</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-</span><span data-line="176">        <span class="k">else</span><span class="p">:</span>
-</span><span data-line="177">            <span class="n">launch_process</span><span class="p">()</span>
-</span><span data-line="178">
-</span><span data-line="179">        <span class="k">yield</span> <span class="n">process</span>
-</span><span data-line="180">    <span class="k">finally</span><span class="p">:</span>
-</span><span data-line="181">        <span class="k">if</span> <span class="ow">not</span> <span class="n">already_running</span> <span class="ow">and</span> <span class="n">process</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
-</span><span data-line="182">            <span class="k">if</span> <span class="n">force_kill</span><span class="p">:</span>
-</span><span data-line="183">                <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Killing process: </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s1">...'</span><span class="p">)</span>
-</span><span data-line="184">                <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">active_children</span><span class="p">():</span>
-</span><span data-line="185">                    <span class="n">clog</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
-</span><span data-line="186">                    <span class="n">child</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
-</span><span data-line="187">                <span class="c1"># Ensure the main process is also terminated and joined</span>
-</span><span data-line="188">                <span class="n">process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
-</span><span data-line="189">                <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</span><span data-line="190">                <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s1">'... </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s1"> process killed'</span><span class="p">)</span>
-</span><span data-line="191">            <span class="k">else</span><span class="p">:</span>
-</span><span data-line="192">                <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div>
+</span><span data-line="72"><span class="nd">@contextmanager</span>
+</span><span data-line="73"><span class="k">def</span><span class="w"> </span><span class="nf">run_process</span><span class="p">(</span>
+</span><span data-line="74">    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+</span><span data-line="75">    <span class="n">func_args</span><span class="o">=</span><span class="p">(),</span>
+</span><span data-line="76">    <span class="n">func_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="77">    <span class="o">*</span><span class="p">,</span>
+</span><span data-line="78">    <span class="n">process_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span data-line="79">    <span class="n">is_ready</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="80">    <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+</span><span data-line="81">    <span class="n">force_kill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="82">    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span data-line="83">    <span class="n">process_already_running</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="84"><span class="p">):</span>
+</span><span data-line="85"><span class="w">    </span><span class="sd">"""</span>
+</span><span data-line="86"><span class="sd">    Context manager to launch a process and ensure cleanup.</span>
+</span><span data-line="87"><span class="sd">    If process_already_running is provided and returns True, the process is not launched or killed.</span>
+</span><span data-line="88"><span class="sd">    Otherwise, launches the process and kills it on exit (if force_kill).</span>
+</span><span data-line="89">
+</span><span data-line="90"><span class="sd">    Args:</span>
+</span><span data-line="91"><span class="sd">        func: The function to run in a new process.</span>
+</span><span data-line="92"><span class="sd">        func_args: Positional arguments for the function.</span>
+</span><span data-line="93"><span class="sd">        func_kwargs: Keyword arguments for the function.</span>
+</span><span data-line="94"><span class="sd">        process_name: Name for the process (optional).</span>
+</span><span data-line="95"><span class="sd">        is_ready: Predicate or seconds to wait for readiness (optional).</span>
+</span><span data-line="96"><span class="sd">        timeout: Timeout for readiness check (seconds).</span>
+</span><span data-line="97"><span class="sd">        force_kill: Whether to kill the process on exit.</span>
+</span><span data-line="98"><span class="sd">        verbose: Enable verbose logging.</span>
+</span><span data-line="99"><span class="sd">        process_already_running: Callable that returns True if the process is already running.</span>
+</span><span data-line="100"><span class="sd">    Yields:</span>
+</span><span data-line="101"><span class="sd">        The process object if launched, else None.</span>
+</span><span data-line="102"><span class="sd">    """</span>
+</span><span data-line="103">    <span class="c1"># Check if process is already running</span>
+</span><span data-line="104">    <span class="n">already_running</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="105">    <span class="k">if</span> <span class="n">process_already_running</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="106">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="107">            <span class="n">already_running</span> <span class="o">=</span> <span class="n">process_already_running</span><span class="p">()</span>
+</span><span data-line="108">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="109">            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in process_already_running check: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span data-line="110">
+</span><span data-line="111">    <span class="k">if</span> <span class="n">already_running</span><span class="p">:</span>
+</span><span data-line="112">        <span class="k">yield</span> <span class="kc">None</span>
+</span><span data-line="113">        <span class="k">return</span>
+</span><span data-line="114">
+</span><span data-line="115">    <span class="k">def</span><span class="w"> </span><span class="nf">launch_process</span><span class="p">():</span>
+</span><span data-line="116">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="117">            <span class="nb">print</span><span class="p">(</span><span class="s2">"starting process!..."</span><span class="p">)</span>
+</span><span data-line="118">            <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Starting </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s2"> process..."</span><span class="p">)</span>
+</span><span data-line="119">            <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span data-line="120">            <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s2">"... </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s2"> process started."</span><span class="p">)</span>
+</span><span data-line="121">        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+</span><span data-line="122">            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+</span><span data-line="123">                <span class="sa">f</span><span class="s2">"Something went wrong when trying to launch process </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s2">"</span>
+</span><span data-line="124">            <span class="p">)</span>
+</span><span data-line="125">
+</span><span data-line="126">    <span class="k">def</span><span class="w"> </span><span class="nf">launch_and_wait_till_ready</span><span class="p">(</span>
+</span><span data-line="127">        <span class="n">start_process</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">],</span>
+</span><span data-line="128">        <span class="n">is_ready</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
+</span><span data-line="129">        <span class="n">check_every_seconds</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span data-line="130">        <span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
+</span><span data-line="131">    <span class="p">):</span>
+</span><span data-line="132"><span class="w">        </span><span class="sd">"""A function that launches a process, checks if it's ready, and exits when it is.</span>
+</span><span data-line="133">
+</span><span data-line="134"><span class="sd">        :param start_process: A argument-less function that launches an independent process</span>
+</span><span data-line="135"><span class="sd">        :param is_ready: A argument-less function that returns False if, and only if, the process should be considered ready</span>
+</span><span data-line="136"><span class="sd">        :param check_every_seconds: Determines the frequency that is_ready will be called</span>
+</span><span data-line="137"><span class="sd">        :param timeout: Determines how long to wait for the process to be ready before we should give up</span>
+</span><span data-line="138"><span class="sd">        :return: start_process_output, is_ready_output</span>
+</span><span data-line="139"><span class="sd">        """</span>
+</span><span data-line="140">        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+</span><span data-line="141">
+</span><span data-line="142">        <span class="c1"># If is_ready is a number, make an is_ready function out of it</span>
+</span><span data-line="143">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">is_ready</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+</span><span data-line="144">            <span class="n">is_ready_in_seconds</span> <span class="o">=</span> <span class="n">is_ready</span>
+</span><span data-line="145">
+</span><span data-line="146">            <span class="k">def</span><span class="w"> </span><span class="nf">is_ready_func</span><span class="p">():</span>
+</span><span data-line="147">                <span class="sa">f</span><span class="s2">"""Returns True if, and only if, </span><span class="si">{</span><span class="n">is_ready_in_seconds</span><span class="si">}</span><span class="s2"> elapsed"""</span>
+</span><span data-line="148">                <span class="k">return</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span> <span class="o">&gt;=</span> <span class="n">is_ready_in_seconds</span>
+</span><span data-line="149">
+</span><span data-line="150">            <span class="n">is_ready_func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"wait_for_seconds(</span><span class="si">{</span><span class="n">is_ready_in_seconds</span><span class="si">}</span><span class="s2">)"</span>
+</span><span data-line="151">            <span class="n">is_ready</span> <span class="o">=</span> <span class="n">is_ready_func</span>
+</span><span data-line="152">        <span class="n">start_process_output</span> <span class="o">=</span> <span class="n">start_process</span><span class="p">()</span>  <span class="c1"># needs launch a parallel process!</span>
+</span><span data-line="153">        <span class="k">while</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">:</span>
+</span><span data-line="154">            <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+</span><span data-line="155">            <span class="n">is_ready_output</span> <span class="o">=</span> <span class="n">is_ready</span><span class="p">()</span>
+</span><span data-line="156">            <span class="k">if</span> <span class="n">is_ready_output</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+</span><span data-line="157">                <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+</span><span data-line="158">                <span class="n">sleep</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">check_every_seconds</span> <span class="o">-</span> <span class="n">elapsed</span><span class="p">))</span>
+</span><span data-line="159">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="160">                <span class="k">return</span> <span class="n">start_process_output</span><span class="p">,</span> <span class="n">is_ready_output</span>
+</span><span data-line="161">        <span class="c1"># If you got so far, raise TimeoutError</span>
+</span><span data-line="162">        <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span>
+</span><span data-line="163">            <span class="sa">f</span><span class="s2">"Launching </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">start_process</span><span class="p">,</span><span class="w"> </span><span class="s1">'__qualname__'</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+</span><span data-line="164">            <span class="sa">f</span><span class="s2">"and checking for readiness with </span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">is_ready</span><span class="p">,</span><span class="w"> </span><span class="s1">'__qualname__'</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+</span><span data-line="165">            <span class="sa">f</span><span class="s2">"timedout (timeout=</span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s)"</span>
+</span><span data-line="166">        <span class="p">)</span>
+</span><span data-line="167">
+</span><span data-line="168">    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">func_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
+</span><span data-line="169">    <span class="n">clog</span> <span class="o">=</span> <span class="n">conditional_logger</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+</span><span data-line="170">    <span class="n">process_name</span> <span class="o">=</span> <span class="n">process_name</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">"__qualname__"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\b</span><span class="s2">"</span><span class="p">)</span>
+</span><span data-line="171">
+</span><span data-line="172">    <span class="k">try</span><span class="p">:</span>
+</span><span data-line="173">        <span class="n">process</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">func_args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">process_name</span><span class="p">)</span>
+</span><span data-line="174">
+</span><span data-line="175">        <span class="k">if</span> <span class="n">is_ready</span><span class="p">:</span>  <span class="c1"># if the 'is_ready' time or predicate is defined</span>
+</span><span data-line="176">            <span class="n">launch_and_wait_till_ready</span><span class="p">(</span><span class="n">launch_process</span><span class="p">,</span> <span class="n">is_ready</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+</span><span data-line="177">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="178">            <span class="n">launch_process</span><span class="p">()</span>
+</span><span data-line="179">
+</span><span data-line="180">        <span class="k">yield</span> <span class="n">process</span>
+</span><span data-line="181">    <span class="k">finally</span><span class="p">:</span>
+</span><span data-line="182">        <span class="k">if</span> <span class="ow">not</span> <span class="n">already_running</span> <span class="ow">and</span> <span class="n">process</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+</span><span data-line="183">            <span class="k">if</span> <span class="n">force_kill</span><span class="p">:</span>
+</span><span data-line="184">                <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Killing process: </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+</span><span data-line="185">                <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">active_children</span><span class="p">():</span>
+</span><span data-line="186">                    <span class="n">clog</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+</span><span data-line="187">                    <span class="n">child</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
+</span><span data-line="188">                <span class="c1"># Ensure the main process is also terminated and joined</span>
+</span><span data-line="189">                <span class="n">process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+</span><span data-line="190">                <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span data-line="191">                <span class="n">clog</span><span class="p">(</span><span class="sa">f</span><span class="s2">"... </span><span class="si">{</span><span class="n">process_name</span><span class="si">}</span><span class="s2"> process killed"</span><span class="p">)</span>
+</span><span data-line="192">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="193">                <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div>
 
 </span></pre></div>
         </article><button class="back-to-top" type="button">
@@ -353,7 +354,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=22607128"></script>
+      <script src="../../../_static/documentation_options.js?v=bafade30"></script>
       <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
