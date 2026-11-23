@@ -71,7 +71,7 @@ class TaskDispatcher:
         on_error: Callable | None = None,
         args=None,
         kwargs=None,
-        **init_kwargs
+        **init_kwargs,
     ) -> None:
         self._is_complete = False
         if not kwargs:
@@ -83,7 +83,7 @@ class TaskDispatcher:
             on_iter=on_iter,
             on_end=self._mk_end_handler(on_end),
             on_error=self._mk_error_handler(on_error),
-            **init_kwargs
+            **init_kwargs,
         )
         self._queued_runners.append((runner, args, kwargs))
 
@@ -97,7 +97,7 @@ class TaskDispatcher:
         on_error: Callable | None = None,
         args=None,
         kwargs=None,
-        **init_kwargs
+        **init_kwargs,
     ):
         """Execute a single task. The results of the task will be appended to
         the results, status, and errors lists.
@@ -113,15 +113,13 @@ class TaskDispatcher:
             on_iter=on_iter,
             on_end=self._mk_end_handler(on_end),
             on_error=self._mk_error_handler(on_error),
-            **init_kwargs
+            **init_kwargs,
         )
         self._dispatched_runners.append(runner)
         return runner(*args, **kwargs)
 
     def run(self, timeout=10) -> bool:
-        """Execute all enqueued tasks.
-
-        """
+        """Execute all enqueued tasks."""
         while len(self._queued_runners):
             runner, args, kwargs = self._queued_runners.pop()
             self._dispatched_runners.append(runner)
@@ -140,7 +138,7 @@ class TaskDispatcher:
 
         def end_handler(result):
             self.results[target_index] = result
-            self.status[target_index] = 'success'
+            self.status[target_index] = "success"
             if on_end:
                 on_end(result)
 
@@ -152,7 +150,7 @@ class TaskDispatcher:
 
         def error_handler(result):
             self.errors[target_index] = result
-            self.status[target_index] = 'error'
+            self.status[target_index] = "error"
             if on_error:
                 on_error(result)
 
@@ -172,7 +170,9 @@ class TaskDispatcher:
             return True
         if self._check_complete:
             self._is_complete = self._check_complete(
-                self.results, self.status, self.errors,
+                self.results,
+                self.status,
+                self.errors,
             )
         else:
             for status in self.status:

@@ -16,7 +16,7 @@ class Taskrunner:
         on_iter: Callable | None = None,
         on_end: Callable | None = None,
         on_error: Callable | None = None,
-        **kwargs
+        **kwargs,
     ) -> None:
         self._func = func
         self._on_iter = on_iter

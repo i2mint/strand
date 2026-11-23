@@ -37,14 +37,14 @@ def resolve_runner_cls(target):
             target_cls = CoroutineTaskrunner
         else:
             raise ValueError(
-                f'Taskrunner target {target} is invalid. '
-                f'Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}.'
+                f"Taskrunner target {target} is invalid. "
+                f"Valid targets are {THREAD}, {PROCESS}, {SYNC}, {STORE}, and {COROUTINE}."
             )
     elif target == Taskrunner or issubclass(target, Taskrunner):
         target_cls = target
     else:
         raise ValueError(
-            f'Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class.'
+            f"Taskrunner target {target} is invalid. Must be an allowed string or a Taskrunner class."
         )
     return target_cls
 
@@ -105,7 +105,7 @@ def run_process(
         try:
             already_running = process_already_running()
         except Exception as e:
-            raise RuntimeError(f'Error in process_already_running check: {e}')
+            raise RuntimeError(f"Error in process_already_running check: {e}")
 
     if already_running:
         yield None
@@ -113,13 +113,13 @@ def run_process(
 
     def launch_process():
         try:
-            print('starting process!...')
-            clog(f'Starting {process_name} process...')
+            print("starting process!...")
+            clog(f"Starting {process_name} process...")
             process.start()
-            clog(f'... {process_name} process started.')
+            clog(f"... {process_name} process started.")
         except Exception:
             raise RuntimeError(
-                f'Something went wrong when trying to launch process {process_name}'
+                f"Something went wrong when trying to launch process {process_name}"
             )
 
     def launch_and_wait_till_ready(
@@ -146,7 +146,7 @@ def run_process(
                 f"""Returns True if, and only if, {is_ready_in_seconds} elapsed"""
                 return time() - start_time >= is_ready_in_seconds
 
-            is_ready_func.__name__ = f'wait_for_seconds({is_ready_in_seconds})'
+            is_ready_func.__name__ = f"wait_for_seconds({is_ready_in_seconds})"
             is_ready = is_ready_func
         start_process_output = start_process()  # needs launch a parallel process!
         while time() - start_time < timeout:
@@ -161,12 +161,12 @@ def run_process(
         raise TimeoutError(
             f"Launching {getattr(start_process, '__qualname__', None)} "
             f"and checking for readiness with {getattr(is_ready, '__qualname__', None)} "
-            f'timedout (timeout={timeout}s)'
+            f"timedout (timeout={timeout}s)"
         )
 
     kwargs = func_kwargs or {}
     clog = conditional_logger(verbose)
-    process_name = process_name or getattr(func, '__qualname__', '\b')
+    process_name = process_name or getattr(func, "__qualname__", "\b")
 
     try:
         process = Process(target=func, args=func_args, kwargs=kwargs, name=process_name)
@@ -180,13 +180,13 @@ def run_process(
     finally:
         if not already_running and process is not None and process.is_alive():
             if force_kill:
-                clog(f'Killing process: {process_name}...')
+                clog(f"Killing process: {process_name}...")
                 for child in active_children():
                     clog(child)
                     child.kill()
                 # Ensure the main process is also terminated and joined
                 process.terminate()
                 process.join(timeout=5)
-                clog(f'... {process_name} process killed')
+                clog(f"... {process_name} process killed")
             else:
                 process.join()
