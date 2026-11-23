@@ -1,12 +1,10 @@
 # strand
 
-Easy creation of non-blocking tasks
+Easy creation of non-blocking tasks: run a function in a thread or a process and get on with your work.
 
-To install:	```pip install strand```
-
-## Warning
-
-In order to use threads or multiprocessing safely, you need to understand the constraints of those features. A thorough discussion of how not to shoot yourself in the foot is outside the scope of this library. Future versions of this library may include strong input checks to prevent more common mistakes, with optional arguments to override checks if necessary. This version does not contain any safety controls yet.
+```bash
+pip install strand
+```
 
 ## Basic Usage
 ```python
@@ -28,6 +26,10 @@ runner = ThreadTaskrunner(long_blocking_function, on_iter=handle_chunk)
 # the function will run in a thread
 runner(1e8, 1e3)
 ```
+
+## Warning
+
+In order to use threads or multiprocessing safely, you need to understand the constraints of those features. A thorough discussion of how not to shoot yourself in the foot is outside the scope of this library. Future versions of this library may include strong input checks to prevent more common mistakes, with optional arguments to override checks if necessary. This version does not contain any safety controls yet.
 
 ## Decorator syntax
 ```python
@@ -56,8 +58,7 @@ The `as_task` decorator takes a taskrunner target as its first argument. The arg
 
 ## Base API
 
-`class strand.Taskrunner(func: Callable, *init_args, on_iter: Optional[Callable] = None,
-on_end: Optional[Callable] = None, on_error: Optional[Callable] = None, **init_kwargs)`
+`class strand.Taskrunner(func: Callable, *init_args, on_iter: Optional[Callable] = None, on_end: Optional[Callable] = None, on_error: Optional[Callable] = None, **init_kwargs)`
 
 The base Taskrunner class and its subclasses take a callable as their first init argument. Taskrunners implement `__call__` and pass arguments to their stored callable when called.
 
@@ -71,20 +72,17 @@ The optional arguments `on_iter`, `on_end`, and `on_error` are callbacks to be i
 ## Subclasses
 
 ### ThreadTaskrunner
-`class strand.ThreadTaskrunner(func: Callable, *init_args, on_iter: Optional[Callable],
-on_end: Optional[Callable], on_error: Optional[Callable])`
+`class strand.ThreadTaskrunner(func: Callable, *init_args, on_iter: Optional[Callable], on_end: Optional[Callable], on_error: Optional[Callable])`
 
 Runs `func` in a thread. Simple as that.
 
 ### MultiprocessTaskrunner
-`class strand.MultiprocessTaskrunner(func: Callable, *init_args, on_iter: Optional[Callable],
-on_end: Optional[Callable], on_error: Optional[Callable], **init_kwargs)`
+`class strand.MultiprocessTaskrunner(func: Callable, *init_args, on_iter: Optional[Callable], on_end: Optional[Callable], on_error: Optional[Callable], **init_kwargs)`
 
 Runs `func` in a new process. Has a separate set of caveats from multi-threading.
 
 ### CoroutineTaskrunner
-`class strand.MultiprocessTaskrunner(func: Callable, *init_args, on_iter: Optional[Callable],
-on_end: Optional[Callable], on_error: Optional[Callable]), yield_on_iter: Optional[bool], **init_kwargs)`
+`class strand.MultiprocessTaskrunner(func: Callable, *init_args, on_iter: Optional[Callable], on_end: Optional[Callable], on_error: Optional[Callable]), yield_on_iter: Optional[bool], **init_kwargs)`
 
 Runs `func` in a coroutine. Requires the calling context to already be within a coroutine in order to derive much benefit. Not fully fleshed out yet.
 
